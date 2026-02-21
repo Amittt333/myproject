@@ -1,0 +1,819 @@
+!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="project.css">
+<title>local HB</title>S
+<!-- ---------- TOPBAR ---------- -->
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="logo" onclick="go('home')">Kaam<span>Wala</span></div>
+
+    <div class="page-switcher" id="pageSwitcher">
+      <div class="pg-group">
+        <span class="pg-grp-lbl">Public</span>
+        <button class="pg-btn active" onclick="go('home')"      id="pgb-home">Home</button>
+        <button class="pg-btn"        onclick="go('login')"     id="pgb-login">Login</button>
+        <button class="pg-btn"        onclick="go('register')"  id="pgb-register">Register</button>
+      </div>
+      <div class="pg-group">
+        <span class="pg-grp-lbl">Customer</span>
+        <button class="pg-btn" onclick="go('c-dashboard')" id="pgb-c-dashboard">Dashboard</button>
+        <button class="pg-btn" onclick="go('c-book')"      id="pgb-c-book">Book</button>
+        <button class="pg-btn" onclick="go('c-history')"   id="pgb-c-history">History</button>
+      </div>
+      <div class="pg-group">
+        <span class="pg-grp-lbl">Worker</span>
+        <button class="pg-btn" onclick="go('w-dashboard')" id="pgb-w-dashboard">Dashboard</button>
+        <button class="pg-btn" onclick="go('w-bookings')"  id="pgb-w-bookings">Bookings</button>
+        <button class="pg-btn" onclick="go('w-profile')"   id="pgb-w-profile">Profile</button>
+      </div>
+      <div class="pg-group">
+        <span class="pg-grp-lbl">Admin</span>
+        <button class="pg-btn" onclick="go('a-login')"     id="pgb-a-login">Login</button>
+        <button class="pg-btn" onclick="go('a-dashboard')" id="pgb-a-dashboard">Dashboard</button>
+        <button class="pg-btn" onclick="go('a-workers')"   id="pgb-a-workers">Workers</button>
+        <button class="pg-btn" onclick="go('a-services')"  id="pgb-a-services">Services</button>
+        <button class="pg-btn" onclick="go('a-bookings')"  id="pgb-a-bookings">Bookings</button>
+      </div>
+      <div class="pg-group" style="border:none">
+        <button class="pg-btn" onclick="go('roadmap')" id="pgb-roadmap" style="color:var(--amber)">??? Roadmap</button>
+      </div>
+    </div>
+
+    <div class="nav-links" id="navLinks">
+      <button class="btn btn-ghost btn-sm" onclick="go('login')">Login</button>
+      <button class="btn btn-amber btn-sm" onclick="go('register')">Sign Up</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+ 
+<!------------P1 — HOME (index.php)-------------------------- -->
+<div class="page active" id="page-home">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container" style="position:relative">
+      <div class="hero-eyebrow"><div class="pulse"></div>Hazaribagh mein Live</div>
+      <h1>Book <em>Trusted</em><br>Workers in<br>Hazaribagh</h1>
+      <p class="hero-sub">Verified plumbers, electricians, carpenters aur bahut kuch — kuch ghanton mein aapke darwaze par.</p>
+      <div class="hero-search">
+        <div class="hs-row">
+          <select class="fc">
+            <option>Service choose karein</option>
+            <option>?? Plumber</option><option>? Electrician</option>
+            <option>?? Carpenter</option><option>?? Painter</option>
+            <option>?? Cleaner</option><option>?? AC Technician</option>
+          </select>
+          <input class="fc" type="text" placeholder="Aapka area / locality">
+          <button class="btn btn-amber" onclick="go('c-book')">Dhundo ?</button>
+        </div>
+      </div>
+      <div class="trust-row">
+        <div><div class="trust-num">240+</div><div class="trust-lbl">Verified Workers</div></div>
+        <div><div class="trust-num">1,800+</div><div class="trust-lbl">Jobs Completed</div></div>
+        <div><div class="trust-num">4.7?</div><div class="trust-lbl">Average Rating</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section style="padding:3rem 0;background:var(--bg2);border-top:1px solid var(--bdr)">
+    <div class="container">
+      <div class="lbl mb-1" style="margin-bottom:.5rem">Services</div>
+      <h2 style="margin-bottom:1.5rem">Kya chahiye aapko?</h2>
+      <div class="svc-grid">
+        <div class="svc-chip" onclick="go('c-book')"><div class="si">??</div><div class="sn">Plumber</div><div class="sp">?200 se</div></div>
+        <div class="svc-chip" onclick="go('c-book')"><div class="si">?</div><div class="sn">Electrician</div><div class="sp">?250 se</div></div>
+        <div class="svc-chip" onclick="go('c-book')"><div class="si">??</div><div class="sn">Carpenter</div><div class="sp">?300 se</div></div>
+        <div class="svc-chip" onclick="go('c-book')"><div class="si">??</div><div class="sn">Painter</div><div class="sp">?400 se</div></div>
+        <div class="svc-chip" onclick="go('c-book')"><div class="si">??</div><div class="sn">Cleaner</div><div class="sp">?150 se</div></div>
+        <div class="svc-chip" onclick="go('c-book')"><div class="si">??</div><div class="sn">AC Tech</div><div class="sp">?350 se</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section style="padding:3rem 0">
+    <div class="container">
+      <div class="lbl" style="margin-bottom:.5rem">Kaise kaam karta hai</div>
+      <h2 style="margin-bottom:1.5rem">3 Aasaan Steps</h2>
+      <div class="steps-grid">
+        <div class="card"><div style="font-size:1.8rem;margin-bottom:.7rem">??</div><div class="lbl" style="color:var(--amber);margin-bottom:.3rem">STEP 1</div><h3 style="margin-bottom:.3rem">Service Book Karein</h3><p class="muted">Service choose karein, date/time aur address dijiyen.</p></div>
+        <div class="card"><div style="font-size:1.8rem;margin-bottom:.7rem">??</div><div class="lbl" style="color:var(--amber);margin-bottom:.3rem">STEP 2</div><h3 style="margin-bottom:.3rem">Worker Match Hoga</h3><p class="muted">Hum aapke paas available verified worker dhundenge.</p></div>
+        <div class="card"><div style="font-size:1.8rem;margin-bottom:.7rem">?</div><div class="lbl" style="color:var(--amber);margin-bottom:.3rem">STEP 3</div><h3 style="margin-bottom:.3rem">Kaam Karwa Lein</h3><p class="muted">Worker aayega, kaam karega. Baad mein rating dijiye.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding:3rem 0;background:var(--bg2);border-top:1px solid var(--bdr);text-align:center">
+    <div class="container">
+      <h2 style="margin-bottom:.5rem">Abhi Shuru Karein</h2>
+      <p class="muted" style="margin-bottom:1.5rem">Free mein account banayein — advance payment nahi</p>
+      <div style="display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap">
+        <button class="btn btn-amber" onclick="go('register')">Customer Sign Up</button>
+        <button class="btn btn-outline" onclick="go('register')">Worker ke roop mein join karein</button>
+      </div>
+      <p class="muted" style="margin-top:1rem">?? +91 98765 xxx10 · Mon–Sat, 8AM–8PM</p>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="container">© 2025 <strong style="color:var(--amber)">KaamWala</strong> – Hazaribagh, Jharkhand | ?? <a href="#">+91 98765 43210</a></div></footer>
+</div>
+
+<!-- --------------------------------------
+     P2 — LOGIN (login.php)
+-------------------------------------- -->
+<div class="page" id="page-login">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <h2 style="margin-bottom:.2rem">Wapas aaiye ??</h2>
+      <p class="muted" style="margin-bottom:1.5rem">Apne KaamWala account mein login karein</p>
+      <div class="auth-tabs" id="loginTabs">
+        <button class="auth-tab active" onclick="setLoginTab(this,'customer')">?? Customer</button>
+        <button class="auth-tab"        onclick="setLoginTab(this,'worker')">?? Worker</button>
+        <button class="auth-tab"        onclick="setLoginTab(this,'admin')">??? Admin</button>
+      </div>
+      <div class="fg"><label>Phone ya Email</label><input class="fc" id="loginEmail" type="text" placeholder="Phone number ya email"></div>
+      <div class="fg"><label>Password</label><input class="fc" id="loginPass" type="password" placeholder="Apna password dijiyen"></div>
+      <div style="text-align:right;margin-bottom:1rem"><a href="#" style="font-size:.8rem">Password bhool gaye?</a></div>
+      <button class="btn btn-amber btn-full" onclick="doLogin()">Login Karein ?</button>
+      <div class="or-div">ya</div>
+      <button class="btn btn-outline btn-full" style="margin-bottom:1rem">?? OTP se login karein</button>
+      <p class="muted" style="text-align:center;font-size:.82rem">Naya account? <a onclick="go('register')" style="cursor:pointer">Register karein</a></p>
+    </div>
+  </div>
+</div>
+
+<!---
+     P3 — REGISTER (register.php)
+-------------------------------------- -->
+<div class="page" id="page-register">
+  <div class="auth-wrap" style="align-items:flex-start;padding-top:80px">
+    <div class="auth-card" style="max-width:500px">
+      <h2 style="margin-bottom:.2rem">Account Banayein</h2>
+      <p class="muted" style="margin-bottom:1.5rem">Hazaribagh ke hazaron users se jud jayein</p>
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="regTabC" onclick="switchRegTab('customer')">?? Customer</button>
+        <button class="auth-tab"        id="regTabW" onclick="switchRegTab('worker')">?? Worker</button>
+      </div>
+      <!-- Customer fields -->
+      <div id="regCustomer">
+        <div class="fg"><label>Poora Naam</label><input class="fc" type="text" placeholder="Apna poora naam"></div>
+        <div class="fg2">
+          <div class="fg"><label>Email</label><input class="fc" type="email" placeholder="you@email.com"></div>
+          <div class="fg"><label>Phone</label><input class="fc" type="tel" placeholder="+91 XXXXX XXXXX"></div>
+        </div>
+        <div class="fg2">
+          <div class="fg"><label>Password</label><input class="fc" type="password" placeholder="Kam se kam 6 char"></div>
+          <div class="fg"><label>Confirm Password</label><input class="fc" type="password" placeholder="Dobara likhein"></div>
+        </div>
+      </div>
+      <!-- Worker fields -->
+      <div id="regWorker" style="display:none">
+        <div class="fg"><label>Poora Naam</label><input class="fc" type="text" placeholder="Apna poora naam"></div>
+        <div class="fg"><label>Phone</label><input class="fc" type="tel" placeholder="+91 XXXXX XXXXX"></div>
+        <div class="fg2">
+          <div class="fg"><label>Skill / Trade</label><select class="fc"><option>Plumber</option><option>Electrician</option><option>Carpenter</option><option>Painter</option><option>Cleaner</option><option>AC Technician</option></select></div>
+          <div class="fg"><label>Experience (saal)</label><input class="fc" type="number" placeholder="e.g. 3" min="0"></div>
+        </div>
+        <div class="fg"><label>Service Area</label><input class="fc" type="text" placeholder="Hazaribagh mein aapka area"></div>
+        <div class="fg"><label>Aadhaar Card Photo</label>
+          <div class="upload-box" onclick="toast('File chooser khulega server par')">?? Aadhaar photo upload karein<br><small>JPG / PNG · Max 5MB</small></div>
+        </div>
+        <div class="fg"><label>Work Portfolio Photos</label>
+          <div class="upload-box">?? Kaam ki photos upload karein (optional)</div>
+        </div>
+        <div class="fg2">
+          <div class="fg"><label>Password</label><input class="fc" type="password" placeholder="Kam se kam 6 char"></div>
+          <div class="fg"><label>Confirm</label><input class="fc" type="password" placeholder="Dobara likhein"></div>
+        </div>
+        <div class="alert a-info">?? Worker registration ke baad admin approval lagti hai (24–48 ghante).</div>
+      </div>
+      <button class="btn btn-amber btn-full" onclick="doRegister()">Account Banayein ?</button>
+      <p class="muted" style="text-align:center;margin-top:1rem;font-size:.82rem">Pehle se account hai? <a onclick="go('login')" style="cursor:pointer">Login karein</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- --------------------------------------
+     P4 — CUSTOMER DASHBOARD (customer/dashboard.php)
+-------------------------------------- -->
+<div class="page" id="page-c-dashboard">
+  <div class="dash-layout">
+    <aside class="sidebar">
+      <div class="sb-brand"><div class="sb-name">Priya Sharma</div><div class="sb-role">?? Customer</div></div>
+      <div class="sb-lbl">Menu</div>
+      <button class="sb-link active" onclick="go('c-dashboard')"><span class="ico">??</span>Dashboard</button>
+      <button class="sb-link" onclick="go('c-book')"><span class="ico">?</span>Service Book Karein</button>
+      <button class="sb-link" onclick="go('c-history')"><span class="ico">??</span>Booking History</button>
+      <div class="sb-lbl">Account</div>
+      <button class="sb-link" onclick="doLogout()"><span class="ico">??</span>Logout</button>
+    </aside>
+    <main class="dash-main">
+      <div class="ph">
+        <div><h2>Namaste, Priya ??</h2><div class="sub">Thursday, 20 February 2026</div></div>
+        <button class="btn btn-amber" onclick="go('c-book')">+ Naya Booking</button>
+      </div>
+      <div class="notif-banner">?? Aapki <strong>Electrician</strong> booking <strong>#B1042</strong> — Ramesh Kumar ke saath — 21 Feb ko schedule hai. <span class="badge b-confirmed">Confirmed</span></div>
+      <div class="stat-grid">
+        <div class="stat-card sc-amber"><div class="stat-val">8</div><div class="stat-lbl">Total Bookings</div></div>
+        <div class="stat-card sc-green"><div class="stat-val">6</div><div class="stat-lbl">Completed</div></div>
+        <div class="stat-card sc-blue"><div class="stat-val">1</div><div class="stat-lbl">Active</div></div>
+        <div class="stat-card sc-purple"><div class="stat-val">?2.4k</div><div class="stat-lbl">Total Spent</div></div>
+      </div>
+      <div class="tbl-wrap">
+        <div class="tbl-head"><span class="tbl-title">Recent Bookings</span><button class="btn btn-ghost btn-sm" onclick="go('c-history')">Sab dekhen ?</button></div>
+        <table><thead><tr><th>#</th><th>Service</th><th>Worker</th><th>Date</th><th>Status</th><th>Amount</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td><b>#B1042</b></td><td>? Electrician</td><td>Ramesh Kumar</td><td>21 Feb<div class="td-sub">10:00 AM</div></td><td><span class="badge b-confirmed">Confirmed</span></td><td>?350</td><td><button class="btn btn-ghost btn-sm">Details</button></td></tr>
+          <tr><td><b>#B1038</b></td><td>?? Plumber</td><td>Suresh Yadav</td><td>10 Feb<div class="td-sub">2:00 PM</div></td><td><span class="badge b-completed">Completed</span></td><td>?250</td><td><button class="btn btn-amber btn-sm" onclick="go('c-history')">Rate ?</button></td></tr>
+          <tr><td><b>#B1035</b></td><td>?? Carpenter</td><td>—</td><td>22 Feb<div class="td-sub">11:00 AM</div></td><td><span class="badge b-pending">Pending</span></td><td>?400</td><td><button class="btn btn-red btn-sm" onclick="toast('Booking cancel ho gayi')">Cancel</button></td></tr>
+        </tbody></table>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     P5 — BOOKING FORM (customer/book.php)
+══════════════════════════════════════ -->
+<div class="page" id="page-c-book">
+  <div class="dash-layout">
+    <aside class="sidebar">
+      <div class="sb-brand"><div class="sb-name">Priya Sharma</div><div class="sb-role">👤 Customer</div></div>
+      <div class="sb-lbl">Menu</div>
+      <button class="sb-link" onclick="go('c-dashboard')"><span class="ico">🏠</span>Dashboard</button>
+      <button class="sb-link active" onclick="go('c-book')"><span class="ico">➕</span>Service Book Karein</button>
+      <button class="sb-link" onclick="go('c-history')"><span class="ico">📋</span>Booking History</button>
+      <div class="sb-lbl">Account</div>
+      <button class="sb-link" onclick="doLogout()"><span class="ico">🚪</span>Logout</button>
+    </aside>
+    <main class="dash-main">
+      <div class="ph"><div><h2>Service Book Karein</h2><div class="sub">Apni zaroorat batayein — hum worker dhundenge</div></div></div>
+      <!-- Step bar -->
+      <div style="display:flex;gap:0;margin-bottom:.5rem">
+        <div style="flex:1;height:4px;background:var(--amber);border-radius:2px 0 0 2px"></div>
+        <div style="flex:1;height:4px;background:var(--amber)"></div>
+        <div style="flex:1;height:4px;background:rgba(255,255,255,.12);border-radius:0 2px 2px 0"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:.66rem;font-weight:800;color:var(--tx2);margin-bottom:1.3rem">
+        <span style="color:var(--amber)">1. Service</span><span style="color:var(--amber)">2. Details</span><span>3. Confirm</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+        <div>
+          <div class="card">
+            <h3 style="margin-bottom:1rem">Service Details</h3>
+            <div class="fg"><label>Service Type *</label><select class="fc" id="bookService" onchange="showWorkers(this.value)"><option value="">-- Service choose karein --</option><option>Plumber</option><option>Electrician</option><option>Carpenter</option><option>Painter</option><option>Cleaner</option><option>AC Technician</option></select></div>
+            <div class="fg"><label>Address / Area *</label><input class="fc" type="text" placeholder="e.g. Station Road, Hazaribagh"></div>
+            <div class="fg2">
+              <div class="fg"><label>Date *</label><input class="fc" type="date"></div>
+              <div class="fg"><label>Time Slot *</label><select class="fc"><option>9:00 AM – 11:00 AM</option><option>11:00 AM – 1:00 PM</option><option>2:00 PM – 4:00 PM</option><option>4:00 PM – 6:00 PM</option></select></div>
+            </div>
+            <div class="fg"><label>Problem Description</label><textarea class="fc" rows="3" placeholder="Kya problem hai? Describe karein…"></textarea></div>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <h3 style="margin-bottom:1rem" id="workersHeading">Available Workers</h3>
+            <div id="workersList">
+              <div style="text-align:center;padding:1.5rem;color:var(--tx2)">Pehle service select karein — available workers yahan dikhenge.</div>
+            </div>
+          </div>
+          <div class="card" style="margin-top:.7rem">
+            <div style="display:flex;justify-content:space-between;font-size:.84rem"><span class="muted">Base Price</span><strong id="bookPrice">—</strong></div>
+            <p class="hint" style="margin-top:.4rem">* Final amount worker ke kaam ke baad tay hoga</p>
+          </div>
+        </div>
+      </div>
+      <div class="btn-row" style="margin-top:1rem">
+        <button class="btn btn-amber" onclick="confirmBooking()">Booking Confirm Karein →</button>
+        <button class="btn btn-ghost" onclick="go('c-dashboard')">Cancel</button>
+      </div>
+      <p class="hint" style="margin-top:.5rem">ℹ️ Advance payment nahi — kaam ke baad payment karein</p>
+    </main>
+  </div>
+</div>
+<!--
+═════════════════════════════════════
+     P6 — BOOKING HISTORY (customer/history.php)
+══════════════════════════════════════ -->
+<div class="page" id="page-c-history">
+  <div class="dash-layout">
+    <aside class="sidebar">
+      <div class="sb-brand"><div class="sb-name">Priya Sharma</div><div class="sb-role">👤 Customer</div></div>
+      <div class="sb-lbl">Menu</div>
+      <button class="sb-link" onclick="go('c-dashboard')"><span class="ico">🏠</span>Dashboard</button>
+      <button class="sb-link" onclick="go('c-book')"><span class="ico">➕</span>Service Book Karein</button>
+      <button class="sb-link active" onclick="go('c-history')"><span class="ico">📋</span>Booking History</button>
+      <div class="sb-lbl">Account</div>
+      <button class="sb-link" onclick="doLogout()"><span class="ico">🚪</span>Logout</button>
+    </aside>
+    <main class="dash-main">
+      <div class="ph"><div><h2>Booking History</h2><div class="sub">Apni saari bookings dekhen</div></div><button class="btn btn-amber" onclick="go('c-book')">+ Naya Book</button></div>
+      <!-- Rate form -->
+      <div class="card" style="margin-bottom:1rem;border-color:rgba(224,123,0,.3);background:rgba(224,123,0,.04)">
+        <h3 style="margin-bottom:.4rem">⭐ Rate Karein: Suresh Yadav</h3>
+        <p class="muted" style="margin-bottom:1rem">Booking #B1038 · Plumber · 10 Feb</p>
+        <div class="fg"><label>Rating</label>
+          <div class="stars-row" id="ratingStars">
+            <span class="star lit" onclick="setStar(1)">★</span>
+            <span class="star lit" onclick="setStar(2)">★</span>
+            <span class="star lit" onclick="setStar(3)">★</span>
+            <span class="star lit" onclick="setStar(4)">★</span>
+            <span class="star" onclick="setStar(5)">★</span>
+          </div>
+        </div>
+        <div class="fg"><label>Review</label><textarea class="fc" rows="2" placeholder="Apna experience share karein…"></textarea></div>
+        <div class="btn-row"><button class="btn btn-amber btn-sm" onclick="submitRating()">Review Submit Karein</button><button class="btn btn-ghost btn-sm">Baad mein</button></div>
+      </div>
+      <!-- Filters -->
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem">
+        <select class="fc" style="width:auto;padding:.4rem .7rem"><option>Sabhi Status</option><option>Pending</option><option>Confirmed</option><option>Completed</option><option>Cancelled</option></select>
+        <select class="fc" style="width:auto;padding:.4rem .7rem"><option>Sabhi Services</option><option>Plumber</option><option>Electrician</option><option>Carpenter</option></select>
+        <button class="btn btn-ghost btn-sm">Filter</button><button class="btn btn-outline btn-sm">Reset</button>
+      </div>
+      <div class="tbl-wrap">
+        <table><thead><tr><th>#</th><th>Service</th><th>Worker</th><th>Area</th><th>Date</th><th>Status</th><th>Amount</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td><b>#B1042</b></td><td>⚡ Electrician</td><td>Ramesh Kumar<div class="td-sub">📞 9876500101</div></td><td>Station Road</td><td>21 Feb<div class="td-sub">10:00 AM</div></td><td><span class="badge b-confirmed">Confirmed</span></td><td>₹350</td><td><button class="btn btn-ghost btn-sm">Details</button></td></tr>
+          <tr><td><b>#B1038</b></td><td>🔧 Plumber</td><td>Suresh Yadav</td><td>Bazar Samiti</td><td>10 Feb<div class="td-sub">2:00 PM</div></td><td><span class="badge b-completed">Completed</span></td><td>₹250</td><td><button class="btn btn-amber btn-sm" onclick="toast('Review form upar dekhen')">Rate ⭐</button></td></tr>
+          <tr><td><b>#B1035</b></td><td>🪚 Carpenter</td><td>—</td><td>Canary Hill</td><td>22 Feb</td><td><span class="badge b-pending">Pending</span></td><td>₹400</td><td><button class="btn btn-red btn-sm" onclick="toast('Booking cancel ho gayi')">Cancel</button></td></tr>
+          <tr><td><b>#B1028</b></td><td>🎨 Painter</td><td>Mohan Das</td><td>Hospital Road</td><td>28 Jan</td><td><span class="badge b-completed">Completed</span></td><td>₹800</td><td><span class="badge b-approved">Rated ✓</span></td></tr>
+        </tbody></table>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     P7 — WORKER DASHBOARD (worker/dashboard.php)
+══════════════════════════════════════ -->
+<div class="page" id="page-w-dashboard">
+  <div class="dash-layout">
+    <aside class="sidebar">
+      <div class="sb-brand"><div class="sb-name">Ramesh Kumar</div><div class="sb-role">⚡ Electrician · ⭐4.8</div></div>
+      <div class="sb-lbl">Menu</div>
+      <button class="sb-link active" onclick="go('w-dashboard')"><span class="ico">🏠</span>Dashboard</button>
+      <button class="sb-link" onclick="go('w-bookings')"><span class="ico">📋</span>Sabhi Bookings</button>
+      <button class="sb-link" onclick="go('w-profile')"><span class="ico">👤</span>Profile</button>
+      <div class="sb-lbl">Account</div>
+      <button class="sb-link" onclick="doLogout()"><span class="ico">🚪</span>Logout</button>
+    </aside>
+    <main class="dash-main">
+      <div class="ph">
+        <div>
+          <h2>Namaste, Ramesh 👷</h2>
+          <div class="sub" style="display:flex;align-items:center;gap:.4rem;margin-top:.15rem">
+            <span style="width:7px;height:7px;background:var(--green2);border-radius:50%;box-shadow:0 0 6px var(--green2);display:inline-block"></span>
+            Electrician · City Centre · Available
+          </div>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="go('w-profile')">Profile Dekhen →</button>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card sc-amber"><div class="stat-val">12</div><div class="stat-lbl">Is Mahine Jobs</div></div>
+        <div class="stat-card sc-green"><div class="stat-val">₹4.2k</div><div class="stat-lbl">Is Mahine Kamayi</div></div>
+        <div class="stat-card sc-blue"><div class="stat-val">4.8★</div><div class="stat-lbl">Rating</div></div>
+        <div class="stat-card sc-purple"><div class="stat-val">2</div><div class="stat-lbl">Naye Requests</div></div>
+      </div>
+      <div class="notif-banner">🔔 Naya booking request — Priya Sharma · Electrician · 21 Feb · Station Road</div>
+      <h3 style="margin-bottom:.7rem">🔔 Naye Booking Requests</h3>
+      <div class="bk-card hl">
+        <div class="bk-ico">⚡</div>
+        <div class="bk-meta">
+          <div class="bk-title">#B1045 · Priya Sharma <span class="badge b-pending">New</span></div>
+          <div class="bk-info">⚡ Electrician · 📅 21 Feb, 10:00 AM · 📍 Station Road</div>
+          <div class="btn-row">
+            <button class="btn btn-green btn-sm" onclick="toast('Booking accept ho gayi! Customer ko notify kiya.','tg')">✓ Accept</button>
+            <button class="btn btn-red btn-sm" onclick="toast('Booking reject ho gayi')">✗ Reject</button>
+            <button class="btn btn-ghost btn-sm">Details</button>
+          </div>
+        </div>
+        <div style="font-weight:800;color:var(--amber)">₹350</div>
+      </div>
+      <div class="bk-card hl">
+        <div class="bk-ico">⚡</div>
+        <div class="bk-meta">
+          <div class="bk-title">#B1043 · Anil Mehta <span class="badge b-pending">New</span></div>
+          <div class="bk-info">⚡ Electrical rewiring · 📅 22 Feb, 2:00 PM · 📍 Court Chowk</div>
+          <div class="btn-row">
+            <button class="btn btn-green btn-sm" onclick="toast('Booking accept ho gayi!','tg')">✓ Accept</button>
+            <button class="btn btn-red btn-sm" onclick="toast('Booking reject ho gayi')">✗ Reject</button>
+          </div>
+        </div>
+        <div style="font-weight:800;color:var(--amber)">₹280</div>
+      </div>
+      <h3 style="margin-bottom:.7rem;margin-top:1.2rem">🔨 Active Jobs</h3>
+      <div class="bk-card">
+        <div class="bk-ico">⚡</div>
+        <div class="bk-meta">
+          <div class="bk-title">#B1040 · Vijay Singh <span class="badge b-inprogress">In Progress</span></div>
+          <div class="bk-info">📅 20 Feb · 📍 Hospital Road · 📞 9876501234</div>
+          <div class="btn-row">
+            <button class="btn btn-green btn-sm" onclick="toast('Kaam complete! ₹315 credited.','tg')">✓ Kaam Poora</button>
+          </div>
+        </div>
+        <div style="font-weight:800;color:var(--amber)">₹350</div>
+      </div>
+      <!-- Earnings -->
+      <div class="card" style="margin-top:1rem">
+        <div style="display:flex;justify-content:space-between;margin-bottom:1rem"><h3>💰 Kamayi Summary</h3><button class="btn btn-ghost btn-sm" onclick="go('w-bookings')">Detail →</button></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;text-align:center">
+          <div><div style="font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;color:var(--green2)">₹18,500</div><div class="muted" style="font-size:.7rem">Total Kamayi (net)</div></div>
+          <div><div style="font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;color:var(--amber)">₹4,200</div><div class="muted" style="font-size:.7rem">Is Mahine</div></div>
+          <div><div style="font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700">10%</div><div class="muted" style="font-size:.7rem">Commission Rate</div></div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     P8 — WORKER BOOKINGS (worker/bookings.php)
+══════════════════════════════════════ -->
+<div class="page" id="page-w-bookings">
+  <div class="dash-layout">
+    <aside class="sidebar">
+      <div class="sb-brand"><div class="sb-name">Ramesh Kumar</div><div class="sb-role">⚡ Electrician</div></div>
+      <div class="sb-lbl">Menu</div>
+      <button class="sb-link" onclick="go('w-dashboard')"><span class="ico">🏠</span>Dashboard</button>
+      <button class="sb-link active" onclick="go('w-bookings')"><span class="ico">📋</span>Sabhi Bookings</button>
+      <button class="sb-link" onclick="go('w-profile')"><span class="ico">👤</span>Profile</button>
+      <div class="sb-lbl">Account</div>
+      <button class="sb-link" onclick="doLogout()"><span class="ico">🚪</span>Logout</button>
+    </aside>
+    <main class="dash-main">
+      <div class="ph"><h2>Meri Saari Bookings</h2><button class="btn btn-ghost btn-sm" onclick="go('w-dashboard')">← Dashboard</button></div>
+      <div class="stat-grid">
+        <div class="stat-card sc-green"><div class="stat-val">₹16,650</div><div class="stat-lbl">Net Kamayi (total)</div></div>
+        <div class="stat-card sc-amber"><div class="stat-val">₹18,500</div><div class="stat-lbl">Gross Total</div></div>
+        <div class="stat-card sc-red"><div class="stat-val">₹1,850</div><div class="stat-lbl">Commission (10%)</div></div>
+        <div class="stat-card sc-blue"><div class="stat-val">142</div><div class="stat-lbl">Total Jobs Done</div></div>
+      </div>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem">
+        <select class="fc" style="width:auto;padding:.4rem .7rem"><option>Sabhi</option><option>Pending</option><option>Confirmed</option><option>Completed</option><option>Rejected</option></select>
+        <button class="btn btn-ghost btn-sm">Filter</button><button class="btn btn-outline btn-sm">Reset</button>
+      </div>
+      <div class="tbl-wrap">
+        <table><thead><tr><th>#</th><th>Customer</th><th>Service</th><th>Date</th><th>Area</th><th>Status</th><th>Gross</th><th>Net (90%)</th><th>Rating</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td><b>#B1045</b></td><td>Priya Sharma<div class="td-sub">📞 9876500001</div></td><td>⚡ Electrical</td><td>21 Feb</td><td>Station Road</td><td><span class="badge b-pending">Pending</span></td><td>₹350</td><td>—</td><td>—</td><td><button class="btn btn-green btn-sm" onclick="toast('Accept ho gayi!','tg')">Accept</button></td></tr>
+          <tr><td><b>#B1040</b></td><td>Vijay Singh<div class="td-sub">📞 9876501234</div></td><td>⚡ Electrical</td><td>20 Feb</td><td>Hospital Rd</td><td><span class="badge b-inprogress">In Progress</span></td><td>₹350</td><td style="color:var(--green2);font-weight:700">₹315</td><td>—</td><td><button class="btn btn-green btn-sm" onclick="toast('Kaam complete!','tg')">✓ Done</button></td></tr>
+          <tr><td><b>#B1036</b></td><td>Meena Gupta</td><td>⚡ Electrical</td><td>15 Feb</td><td>Canary Hill</td><td><span class="badge b-completed">Completed</span></td><td>₹500</td><td style="color:var(--green2);font-weight:700">₹450</td><td style="color:var(--amber2)">★★★★★</td><td>—</td></tr>
+          <tr><td><b>#B1030</b></td><td>Raju Sharma</td><td>⚡ Rewiring</td><td>5 Feb</td><td>Court Chowk</td><td><span class="badge b-completed">Completed</span></td><td>₹800</td><td style="color:var(--green2);font-weight:700">₹720</td><td style="color:var(--amber2)">★★★★</td><td>—</td></tr>
+        </tbody></table>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ═
+══════════════════════════════════════
+     P9 — WORKER PROFILE (worker/profile)
+══════════════════════════════════════ -->
+<div class="page" id="page-w-profile">
+  <div style="max-width:520px;margin:0 auto">
+    <div class="profile-hero">
+      <div class="pav">R</div>
+      <h2 style="margin-bottom:.2rem">Ramesh Kumar</h2>
+      <div style="color:var(--amber);font-size:.88rem;margin:.2rem 0">⚡ Electrician · 7 saal ka experience</div>
+      <div class="muted" style="font-size:.8rem">📍 City Centre, Hazaribagh</div>
+      <div style="display:flex;justify-content:center;gap:2rem;margin-top:1.2rem">
+        <div style="text-align:center"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:1.4rem;color:var(--amber2)">4.8</div><div class="muted" style="font-size:.68rem">Rating</div></div>
+        <div style="text-align:center"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:1.4rem">142</div><div class="muted" style="font-size:.68rem">Jobs Done</div></div>
+        <div style="text-align:center"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:1.4rem;color:var(--green2)">98%</div><div class="muted" style="font-size:.68rem">Acceptance</div></div>
+      </div>
+    </div>
+    <div style="padding:1.2rem">
+      <div class="lbl" style="margin-bottom:.5rem">Skills</div>
+      <div style="margin-bottom:1.1rem">
+        <span class="skill-tag">Wiring & Rewiring</span><span class="skill-tag">Circuit Breakers</span>
+        <span class="skill-tag">Fan Installation</span><span class="skill-tag">MCB/DB Boards</span><span class="skill-tag">Inverter Setup</span>
+      </div>
+      <div class="lbl" style="margin-bottom:.5rem">Work Photos</div>
+      <div class="gallery" style="margin-bottom:1.1rem">
+        <div class="gallery-cell">⚡</div><div class="gallery-cell">🔌</div><div class="gallery-cell">💡</div>
+      </div>
+      <div class="lbl" style="margin-bottom:.5rem">Verification</div>
+      <div class="card" style="margin-bottom:1rem">
+        <div style="display:flex;justify-content:space-between;font-size:.84rem;margin-bottom:.4rem"><span>Aadhaar Verified</span><span style="color:var(--green2)">✓</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.84rem"><span>Background Check</span><span style="color:var(--green2)">✓</span></div>
+      </div>
+      <div class="lbl" style="margin-bottom:.5rem">Recent Reviews</div>
+      <div class="card" style="margin-bottom:.65rem">
+        <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.5rem">
+          <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue2));display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:#fff">P</div>
+          <div style="flex:1"><div style="font-weight:700;font-size:.87rem">Priya Sharma</div><div class="muted" style="font-size:.7rem">10 Feb 2026</div></div>
+          <div style="color:var(--amber2);font-size:.85rem">★★★★★</div>
+        </div>
+        <p class="muted" style="font-size:.81rem">"Very professional, arrived on time and fixed everything cleanly."</p>
+      </div>
+      <button class="btn btn-amber btn-full" onclick="go('c-book')">Ramesh Kumar ko Book Karein →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     P10 — ADMIN LOGIN (admin/login)
+══════════════════════════════════════ -->
+<div class="page" id="page-a-login">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div style="font-size:2.5rem;text-align:center;margin-bottom:.7rem">🛡️</div>
+      <h2 style="text-align:center;margin-bottom:.2rem">Admin Access</h2>
+      <p class="muted" style="text-align:center;margin-bottom:1.5rem">KaamWala platform administration</p>
+      <div class="alert a-info">🔒 Restricted access. Authorized personnel only.</div>
+      <div class="fg"><label>Admin Email</label><input class="fc" type="email" placeholder="admin@kaamwala.in"></div>
+      <div class="fg"><label>Password</label><input class="fc" type="password" placeholder="Enter admin password"></div>
+      <div class="fg"><label>2FA Code</label><input class="fc" type="text" placeholder="6-digit authenticator code"></div>
+      <button class="btn btn-amber btn-full" onclick="doAdminLogin()">Access Dashboard →</button>
+    </div>
+  </div>
+</div>
+
+<!---     P11 — ADMIN DASHBOARD (admin/dashboard.php)
+-------------------------------------- -->
+<div class="page" id="page-a-dashboard">
+  <div class="dash-layout">
+    <aside class="sidebar">
+      <div class="sb-brand"><div class="sb-name">Admin Panel</div><div class="sb-role">??? KaamWala Admin</div></div>
+      <div class="sb-lbl">Platform</div>
+      <button class="sb-link active" onclick="go('a-dashboard')"><span class="ico">??</span>Dashboard</button>
+      <button class="sb-link" onclick="go('a-workers')"><span class="ico">??</span>Workers <span style="margin-left:auto;background:var(--red);color:#fff;font-size:.6rem;font-weight:800;padding:2px 6px;border-radius:99px">2</span></button>
+      <button class="sb-link" onclick="go('a-services')"><span class="ico">??</span>Services</button>
+      <button class="sb-link" onclick="go('a-bookings')"><span class="ico">??</span>Bookings</button>
+      <div class="sb-lbl">Account</div>
+      <button class="sb-link" onclick="doLogout()"><span class="ico">??</span>Logout</button>
+    </aside>
+    <main class="dash-main">
+      <div class="ph"><div><h2>Platform Overview</h2><div class="sub">KaamWala Admin Dashboard · 20 February 2026</div></div></div>
+      <div class="admin-grid">
+        <div class="admin-stat"><div class="as-val" style="color:var(--amber)">186</div><div class="as-lbl">Total Bookings</div><div class="as-delta">? 12% vs last month</div></div>
+        <div class="admin-stat"><div class="as-val" style="color:var(--green2)">47</div><div class="as-lbl">Active Workers</div><div class="as-delta">? 3 new this week</div></div>
+        <div class="admin-stat"><div class="as-val" style="color:var(--blue2)">312</div><div class="as-lbl">Customers</div><div class="as-delta">? 28 new this month</div></div>
+        <div class="admin-stat"><div class="as-val" style="color:var(--purple2)">?28.4k</div><div class="as-lbl">Revenue (Month)</div><div class="as-delta">? 18% vs last month</div></div>
+        <div class="admin-stat"><div class="as-val" style="color:var(--green2)">87%</div><div class="as-lbl">Completion Rate</div><div class="as-delta">? 3% vs last month</div></div>
+        <div class="admin-stat"><div class="as-val" style="color:var(--amber2)">?2,840</div><div class="as-lbl">Commission (Month)</div><div class="as-delta">10% of revenue</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.3rem">
+        <div class="card">
+          <div class="lbl" style="margin-bottom:.7rem">Platform Health</div>
+          <div style="font-size:.82rem;margin-bottom:.6rem">Completion Rate<div class="prog"><div class="prog-fill" style="width:87%;background:var(--green2)"></div></div><span class="muted">87%</span></div>
+          <div style="font-size:.82rem;margin-bottom:.6rem">Avg Response Time<div class="prog"><div class="prog-fill" style="width:72%;background:var(--amber)"></div></div><span class="muted">18 min avg</span></div>
+          <div style="font-size:.82rem">Worker Satisfaction<div class="prog"><div class="prog-fill" style="width:94%;background:var(--blue2)"></div></div><span class="muted">4.7? avg</span></div>
+        </div>
+        <div class="card">
+          <div class="lbl" style="margin-bottom:.7rem">Quick Actions</div>
+          <div class="btn-row" style="flex-direction:column">
+            <button class="btn btn-amber btn-sm" onclick="go('a-workers')">?? 2 Approvals Pending</button>
+            <button class="btn btn-ghost btn-sm" onclick="go('a-bookings')">?? Pending Bookings</button>
+            <button class="btn btn-ghost btn-sm" onclick="go('a-services')">?? Pricing Update</button>
+          </div>
+        </div>
+      </div>
+      <div class="notif-banner">?? 2 new worker registrations approval ka wait kar rahi hain. <a onclick="go('a-workers')" style="cursor:pointer;font-weight:700;margin-left:.4rem">Dekhein ?</a></div>
+      <div class="tbl-wrap">
+        <div class="tbl-head"><span class="tbl-title">Recent Bookings</span><button class="btn btn-ghost btn-sm" onclick="go('a-bookings')">Sab Dekhen ?</button></div>
+        <table><thead><tr><th>#</th><th>Customer</th><th>Service</th><th>Worker</th><th>Date</th><th>Status</th><th>Amount</th><th>Commission</th></tr></thead>
+        <tbody>
+          <tr><td><b>#B1045</b></td><td>Priya Sharma</td><td>? Electrical</td><td>Ramesh Kumar</td><td>21 Feb</td><td><span class="badge b-pending">Pending</span></td><td>?350</td><td>—</td></tr>
+          <tr><td><b>#B1043</b></td><td>Anil Mehta</td><td>? Electrical</td><td>Ramesh Kumar</td><td>18 Feb</td><td><span class="badge b-confirmed">Active</span></td><td>?280</td><td>—</td></tr>
+          <tr><td><b>#B1040</b></td><td>Vijay Singh</td><td>? Electrical</td><td>Ramesh Kumar</td><td>20 Feb</td><td><span class="badge b-inprogress">In Progress</span></td><td>?350</td><td>—</td></tr>
+          <tr><td><b>#B1038</b></td><td>Priya Sharma</td><td>?? Plumber</td><td>Suresh Yadav</td><td>10 Feb</td><td><span class="badge b-completed">Completed</span></td><td>?250</td><td style="color:var(--green2)">?25</td></tr>
+        </tbody></table>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!--P12 — ADMIN WORKERS (admin/workers.php)
+-------------------------------------- -->
+<div class="page" id="page-a-workers">
+  <div class="dash-layout">
+    <aside class="sidebar">
+      <div class="sb-brand"><div class="sb-name">Admin Panel</div><div class="sb-role">??? KaamWala Admin</div></div>
+      <div class="sb-lbl">Platform</div>
+      <button class="sb-link" onclick="go('a-dashboard')"><span class="ico">??</span>Dashboard</button>
+      <button class="sb-link active" onclick="go('a-workers')"><span class="ico">??</span>Workers</button>
+      <button class="sb-link" onclick="go('a-services')"><span class="ico">??</span>Services</button>
+      <button class="sb-link" onclick="go('a-bookings')"><span class="ico">??</span>Bookings</button>
+      <div class="sb-lbl">Account</div>
+      <button class="sb-link" onclick="doLogout()"><span class="ico">??</span>Logout</button>
+    </aside>
+    <main class="dash-main">
+      <div class="ph"><div><h2>Worker Management</h2><div class="sub">2 pending approvals</div></div></div>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.1rem">
+        <input class="fc" type="text" placeholder="Naam / Skill / Area search karein…" style="flex:1;min-width:180px">
+        <select class="fc" style="width:auto;padding:.4rem .7rem"><option>Sabhi Workers</option><option>? Pending Approval</option><option>? Active</option></select>
+        <button class="btn btn-amber btn-sm">Search</button><button class="btn btn-ghost btn-sm">Reset</button>
+      </div>
+      <div class="tbl-wrap">
+        <div class="tbl-head"><span class="tbl-title">Worker List (5)</span></div>
+        <table><thead><tr><th>#</th><th>Worker</th><th>Skill</th><th>Exp</th><th>Area</th><th>Rating</th><th>Jobs</th><th>Status</th><th>Documents</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr style="background:rgba(224,123,0,.03)"><td>4</td><td><strong>Mohan Lal</strong><div class="td-sub">?? 9876543001</div></td><td>?? Plumber</td><td>5 saal</td><td>Bazar Samiti</td><td>—</td><td>0</td><td><span class="badge b-pending">Pending</span></td><td><button class="btn btn-ghost btn-sm">Aadhaar ??</button></td><td><button class="btn btn-green btn-sm" onclick="toast('Mohan Lal approve ho gaya!','tg')">? Approve</button> <button class="btn btn-red btn-sm" onclick="toast('Rejected')">?</button></td></tr>
+          <tr style="background:rgba(224,123,0,.03)"><td>5</td><td><strong>Kavita Kumari</strong><div class="td-sub">?? 9876543002</div></td><td>?? Cleaner</td><td>2 saal</td><td>Church Road</td><td>—</td><td>0</td><td><span class="badge b-pending">Pending</span></td><td><button class="btn btn-ghost btn-sm">Aadhaar ??</button></td><td><button class="btn btn-green btn-sm" onclick="toast('Kavita approve ho gayi!','tg')">? Approve</button> <button class="btn btn-red btn-sm" onclick="toast('Rejected')">?</button></td></tr>
+          <tr><td>1</td><td><strong>Ramesh Kumar</strong><div class="td-sub">?? 9876500101</div></td><td>? Electrician</td><td>7 saal</td><td>City Centre</td><td style="color:var(--amber2)">4.8?</td><td>142</td><td><span class="badge b-approved">Active ?</span></td><td><button class="btn btn-ghost btn-sm">Aadhaar ??</button></td><td><button class="btn btn-outline btn-sm" onclick="toast('Worker deactivate ho gaya')">Deactivate</button></td></tr>
+          <tr><td>2</td><td><strong>Suresh Yadav</strong><div class="td-sub">?? 9876500102</div></td><td>?? Plumber</td><td>5 saal</td><td>Station Road</td><td style="color:var(--amber2)">4.5?</td><td>89</td><td><span class="badge b-approved">Active ?</span></td><td>—</td><td><button class="btn btn-outline btn-sm">Deactivate</button></td></tr>
+          <tr><td>3</td><td><strong>Deepak Sharma</strong><div class="td-sub">?? 9876500103</div></td><td>?? Carpenter</td><td>8 saal</td><td>Canary Hill</td><td style="color:var(--amber2)">4.9?</td><td>203</td><td><span class="badge b-approved">Active ?</span></td><td>—</td><td><button class="btn btn-outline btn-sm">Deactivate</button></td></tr>
+        </tbody></table>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!---------
+     P13 — ADMIN SERVICES (admin/services.php)
+-------------------------------------- -->
+<div class="page" id="page-a-services">
+  <div class="dash-layout">
+    <aside class="sidebar">
+      <div class="sb-brand"><div class="sb-name">Admin Panel</div><div class="sb-role">??? KaamWala Admin</div></div>
+      <div class="sb-lbl">Platform</div>
+      <button class="sb-link" onclick="go('a-dashboard')"><span class="ico">??</span>Dashboard</button>
+      <button class="sb-link" onclick="go('a-workers')"><span class="ico">??</span>Workers</button>
+      <button class="sb-link active" onclick="go('a-services')"><span class="ico">??</span>Services</button>
+      <button class="sb-link" onclick="go('a-bookings')"><span class="ico">??</span>Bookings</button>
+      <div class="sb-lbl">Account</div>
+      <button class="sb-link" onclick="doLogout()"><span class="ico">??</span>Logout</button>
+    </aside>
+    <main class="dash-main">
+      <div class="ph"><div><h2>Service & Pricing</h2><div class="sub">Sabhi services ki pricing control karein</div></div><button class="btn btn-amber btn-sm" onclick="toast('Add service form khulega server par')">+ Add Service</button></div>
+      <div class="tbl-wrap" style="margin-bottom:1.3rem">
+        <div class="tbl-head"><span class="tbl-title">Service Catalogue</span></div>
+        <table><thead><tr><th>Service</th><th>Workers</th><th>Base Price (?)</th><th>Hourly Rate (?)</th><th>Status</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td><strong>?? Plumber</strong></td><td>12 active</td><td><input class="fc" type="number" value="200" style="width:80px;padding:5px 8px"></td><td><input class="fc" type="number" value="80" style="width:70px;padding:5px 8px"></td><td><span class="badge b-approved">Active</span></td><td><button class="btn btn-green btn-sm" onclick="toast('Plumber pricing save ho gayi!','tg')">Save</button> <button class="btn btn-outline btn-sm">Disable</button></td></tr>
+          <tr><td><strong>? Electrician</strong></td><td>18 active</td><td><input class="fc" type="number" value="250" style="width:80px;padding:5px 8px"></td><td><input class="fc" type="number" value="90" style="width:70px;padding:5px 8px"></td><td><span class="badge b-approved">Active</span></td><td><button class="btn btn-green btn-sm" onclick="toast('Electrician pricing save!','tg')">Save</button> <button class="btn btn-outline btn-sm">Disable</button></td></tr>
+          <tr><td><strong>?? Carpenter</strong></td><td>8 active</td><td><input class="fc" type="number" value="300" style="width:80px;padding:5px 8px"></td><td><input class="fc" type="number" value="100" style="width:70px;padding:5px 8px"></td><td><span class="badge b-approved">Active</span></td><td><button class="btn btn-green btn-sm" onclick="toast('Save ho gayi!','tg')">Save</button> <button class="btn btn-outline btn-sm">Disable</button></td></tr>
+          <tr><td><strong>?? Painter</strong></td><td>6 active</td><td><input class="fc" type="number" value="400" style="width:80px;padding:5px 8px"></td><td><input class="fc" type="number" value="120" style="width:70px;padding:5px 8px"></td><td><span class="badge b-approved">Active</span></td><td><button class="btn btn-green btn-sm" onclick="toast('Save ho gayi!','tg')">Save</button> <button class="btn btn-outline btn-sm">Disable</button></td></tr>
+          <tr><td><strong>?? Cleaner</strong></td><td>5 active</td><td><input class="fc" type="number" value="150" style="width:80px;padding:5px 8px"></td><td><input class="fc" type="number" value="60" style="width:70px;padding:5px 8px"></td><td><span class="badge b-approved">Active</span></td><td><button class="btn btn-green btn-sm" onclick="toast('Save ho gayi!','tg')">Save</button> <button class="btn btn-outline btn-sm">Disable</button></td></tr>
+          <tr><td><strong>?? AC Technician</strong></td><td>4 active</td><td><input class="fc" type="number" value="350" style="width:80px;padding:5px 8px"></td><td><input class="fc" type="number" value="110" style="width:70px;padding:5px 8px"></td><td><span class="badge b-approved">Active</span></td><td><button class="btn btn-green btn-sm" onclick="toast('Save ho gayi!','tg')">Save</button> <button class="btn btn-outline btn-sm">Disable</button></td></tr>
+        </tbody></table>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:1rem">+ Naya Service Add Karein</h3>
+        <div class="fg3">
+          <div class="fg"><label>Service Name</label><input class="fc" type="text" placeholder="e.g. Welder"></div>
+          <div class="fg"><label>Base Price (?)</label><input class="fc" type="number" placeholder="200"></div>
+          <div class="fg"><label>Hourly Rate (?)</label><input class="fc" type="number" placeholder="80"></div>
+        </div>
+        <button class="btn btn-amber" onclick="toast('Naya service add ho gaya!','tg')">+ Service Add Karein</button>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- --------------------------------------
+     P14 — ADMIN BOOKINGS (admin/bookings.php)
+-------------------------------------- -->
+<div class="page" id="page-a-bookings">
+  <div class="dash-layout">
+    <aside class="sidebar">
+      <div class="sb-brand"><div class="sb-name">Admin Panel</div><div class="sb-role">??? KaamWala Admin</div></div>
+      <div class="sb-lbl">Platform</div>
+      <button class="sb-link" onclick="go('a-dashboard')"><span class="ico">??</span>Dashboard</button>
+      <button class="sb-link" onclick="go('a-workers')"><span class="ico">??</span>Workers</button>
+      <button class="sb-link" onclick="go('a-services')"><span class="ico">??</span>Services</button>
+      <button class="sb-link active" onclick="go('a-bookings')"><span class="ico">??</span>Bookings</button>
+      <div class="sb-lbl">Account</div>
+      <button class="sb-link" onclick="doLogout()"><span class="ico">??</span>Logout</button>
+    </aside>
+    <main class="dash-main">
+      <div class="ph"><div><h2>Booking Management</h2><div class="sub">186 bookings found</div></div></div>
+      <div class="stat-grid">
+        <div class="stat-card sc-green"><div class="stat-val">148</div><div class="stat-lbl">Completed</div></div>
+        <div class="stat-card sc-blue"><div class="stat-val">12</div><div class="stat-lbl">Active Jobs</div></div>
+        <div class="stat-card sc-amber"><div class="stat-val">18</div><div class="stat-lbl">Pending</div></div>
+        <div class="stat-card sc-purple"><div class="stat-val">?2,840</div><div class="stat-lbl">Commission Earned</div></div>
+      </div>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem">
+        <input class="fc" type="text" placeholder="Customer / Worker / ID search…" style="flex:1;min-width:160px">
+        <select class="fc" style="width:auto;padding:.4rem .7rem"><option>Sabhi Status</option><option>Pending</option><option>Confirmed</option><option>Completed</option><option>Cancelled</option></select>
+        <select class="fc" style="width:auto;padding:.4rem .7rem"><option>Sabhi Services</option><option>Electrician</option><option>Plumber</option><option>Carpenter</option></select>
+        <button class="btn btn-amber btn-sm">Filter</button><button class="btn btn-ghost btn-sm">Reset</button>
+      </div>
+      <div class="tbl-wrap">
+        <table><thead><tr><th>#</th><th>Customer</th><th>Service</th><th>Worker</th><th>Date</th><th>Area</th><th>Status</th><th>Amount</th><th>Commission</th><th>Review</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td><b>#B1045</b></td><td>Priya Sharma<div class="td-sub">9876500001</div></td><td>? Electrical</td><td>Ramesh Kumar</td><td>21 Feb<div class="td-sub">10:00 AM</div></td><td>Station Road</td><td><span class="badge b-pending">Pending</span></td><td>?350</td><td>—</td><td>—</td><td><button class="btn btn-green btn-sm" onclick="toast('Complete mark!','tg')">?</button> <button class="btn btn-red btn-sm" onclick="toast('Cancelled')">?</button></td></tr>
+          <tr><td><b>#B1043</b></td><td>Anil Mehta</td><td>? Electrical</td><td>Ramesh Kumar</td><td>18 Feb</td><td>Court Chowk</td><td><span class="badge b-confirmed">Active</span></td><td>?280</td><td>—</td><td>—</td><td><button class="btn btn-green btn-sm" onclick="toast('Complete!','tg')">?</button> <button class="btn btn-red btn-sm">?</button></td></tr>
+          <tr><td><b>#B1038</b></td><td>Priya Sharma</td><td>?? Plumber</td><td>Suresh Yadav</td><td>10 Feb</td><td>Bazar Samiti</td><td><span class="badge b-completed">Completed</span></td><td>?250</td><td style="color:var(--green2)">?25</td><td style="color:var(--amber2)">?????</td><td>—</td></tr>
+          <tr><td><b>#B1035</b></td><td>Reena Gupta</td><td>?? Carpenter</td><td>—</td><td>8 Feb</td><td>Canary Hill</td><td><span class="badge b-rejected">Rejected</span></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td><b>#B1028</b></td><td>Priya Sharma</td><td>?? Painter</td><td>Mohan Das</td><td>28 Jan</td><td>Hospital Road</td><td><span class="badge b-completed">Completed</span></td><td>?800</td><td style="color:var(--green2)">?80</td><td style="color:var(--amber2)">?????</td><td>—</td></tr>
+        </tbody></table>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:.8rem 0;font-size:.82rem;color:var(--tx2)">
+        <span>Showing 5 of 186 bookings</span>
+        <div style="display:flex;gap:.4rem"><button class="btn btn-ghost btn-sm">? Prev</button><button class="btn btn-amber btn-sm">1</button><button class="btn btn-ghost btn-sm">2</button><button class="btn btn-ghost btn-sm">3</button><button class="btn btn-ghost btn-sm">Next ?</button></div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ---P15 — ROADMAP
+-------------------------------------- -->
+<div class="page" id="page-roadmap">
+  <div style="max-width:640px;margin:0 auto;padding:2.5rem 1rem 4rem">
+    <div style="text-align:center;margin-bottom:2.5rem">
+      <div style="font-size:2rem;margin-bottom:.5rem">???</div>
+      <h2 style="margin-bottom:.4rem">Features Roadmap</h2>
+      <p class="muted">Hazaribagh ka sabse trusted home services platform banane ka plan</p>
+      <div style="display:flex;justify-content:center;gap:1rem;margin-top:1rem;flex-wrap:wrap;font-size:.72rem">
+        <span style="color:var(--green2)">? Launched</span>
+        <span style="color:var(--amber)">? In Progress</span>
+        <span style="color:var(--tx2)">? Planned</span>
+      </div>
+    </div>
+    <div class="rm-track">
+      <!-- MVP -->
+      <div class="rm-stage curr">
+        <div class="rm-dot">?</div>
+        <div class="rm-inner">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.7rem">
+            <div><h3 style="font-size:1rem;margin-bottom:.15rem">MVP — Foundation</h3><p class="muted" style="font-size:.77rem">Core booking platform · Live now</p></div>
+            <span class="badge b-approved" style="white-space:nowrap">?? Live</span>
+          </div>
+          <div>
+            <span class="rm-feat done">? Worker Registration</span><span class="rm-feat done">? Service Booking</span>
+            <span class="rm-feat done">? Accept / Reject</span><span class="rm-feat done">? Rating System</span>
+            <span class="rm-feat done">? Admin Panel</span><span class="rm-feat done">? Booking History</span>
+            <span class="rm-feat wip">? Worker Verification</span>
+          </div>
+          <div style="margin-top:.8rem">
+            <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--tx2);margin-bottom:.3rem"><span>MVP Completion</span><span style="color:var(--green2)">85%</span></div>
+            <div class="prog"><div class="prog-fill" style="width:85%;background:var(--green2)"></div></div>
+          </div>
+        </div>
+      </div>
+      <!-- Stage 2 -->
+      <div class="rm-stage">
+        <div class="rm-dot">2</div>
+        <div class="rm-inner">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.7rem">
+            <div><h3 style="font-size:1rem;margin-bottom:.15rem">Stage 2 — Payments</h3><p class="muted" style="font-size:.77rem">Secure in-app transactions</p></div>
+            <span class="badge b-confirmed">Q2 2026</span>
+          </div>
+          <div><span class="rm-feat">UPI Payment Integration</span><span class="rm-feat">Razorpay / PhonePe</span><span class="rm-feat">Advance Deposit</span><span class="rm-feat">Auto Commission</span><span class="rm-feat">Worker Payout</span><span class="rm-feat">Digital Invoices</span></div>
+        </div>
+      </div>
+      <!-- Stage 3 -->
+      <div class="rm-stage">
+        <div class="rm-dot">3</div>
+        <div class="rm-inner">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.7rem">
+            <div><h3 style="font-size:1rem;margin-bottom:.15rem">Stage 3 — Communication</h3><p class="muted" style="font-size:.77rem">Real-time messaging & alerts</p></div>
+            <span class="badge b-inprogress">Q3 2026</span>
+          </div>
+          <div><span class="rm-feat">In-App Chat</span><span class="rm-feat">Push Notifications</span><span class="rm-feat">WhatsApp Alerts</span><span class="rm-feat">SMS Confirmations</span><span class="rm-feat">Job Reminders</span></div>
+        </div>
+      </div>
+      <!-- Stage 4 -->
+      <div class="rm-stage">
+        <div class="rm-dot">4</div>
+        <div class="rm-inner">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.7rem">
+            <div><h3 style="font-size:1rem;margin-bottom:.15rem">Stage 4 — Maps & Location</h3><p class="muted" style="font-size:.77rem">GPS-powered worker discovery</p></div>
+            <span style="background:rgba(16,185,129,.15);color:#6EE7B7" class="badge">Q4 2026</span>
+          </div>
+          <div><span class="rm-feat">Google Maps Integration</span><span class="rm-feat">Worker GPS Tracking</span><span class="rm-feat">Nearest Worker Algorithm</span><span class="rm-feat">Live ETA</span><span class="rm-feat">Area-based Search</span></div>
+        </div>
+      </div>
+      <!-- Stage 5 -->
+      <div class="rm-stage">
+        <div class="rm-dot">5</div>
+        <div class="rm-inner">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.7rem">
+            <div><h3 style="font-size:1rem;margin-bottom:.15rem">Stage 5 — Android App</h3><p class="muted" style="font-size:.77rem">Native mobile experience</p></div>
+            <span style="background:rgba(244,114,182,.15);color:#FBCFE8" class="badge">2027</span>
+          </div>
+          <div><span class="rm-feat">Android Customer App</span><span class="rm-feat">Android Worker App</span><span class="rm-feat">Offline Capability</span><span class="rm-feat">Biometric Login</span><span class="rm-feat">Play Store Launch</span><span class="rm-feat">iOS (Future)</span></div>
+          <div style="margin-top:.7rem;background:rgba(244,114,182,.07);border:1px solid rgba(244,114,182,.15);border-radius:8px;padding:.65rem;font-size:.77rem;color:#FBCFE8">?? React Native stack — ~80% code Customer + Worker dono apps mein share hoga</div>
+        </div>
+      </div>
+    </div>
+    <!-- Tech Stack -->
+    <div class="card" style="margin-top:.5rem">
+      <h3 style="margin-bottom:.8rem;font-family:'Fraunces',serif">?? Planned Tech Stack</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;font-size:.79rem">
+        <div class="muted">Frontend <span style="color:var(--tx)">React.js</span></div>
+        <div class="muted">Backend <span style="color:var(--tx)">Node.js / Express</span></div>
+        <div class="muted">Database <span style="color:var(--tx)">MongoDB</span></div>
+        <div class="muted">Auth <span style="color:var(--tx)">JWT + OTP</span></div>
+        <div class="muted">Payments <span style="color:var(--tx)">Razorpay</span></div>
+        <div class="muted">Maps <span style="color:var(--tx)">Google Maps API</span></div>
+        <div class="muted">Hosting <span style="color:var(--tx)">AWS / Vercel</span></div>
+        <div class="muted">Mobile <span style="color:var(--tx)">React Native</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="work.js"></script>
+</body>
+</html>
